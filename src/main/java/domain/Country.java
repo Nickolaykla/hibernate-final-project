@@ -19,7 +19,7 @@ public class Country {
     private String name;
 
     @Enumerated(EnumType.ORDINAL)
-    private Integer continent;
+    private Continent continent;
 
     private String region;
 
@@ -47,7 +47,7 @@ public class Country {
     @Column(name = "head_of_state")
     private String headOfState;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "capital")
     private City city;
 
@@ -87,11 +87,11 @@ public class Country {
         this.name = name;
     }
 
-    public Integer getContinent() {
+    public Continent getContinent() {
         return continent;
     }
 
-    public void setContinent(Integer continent) {
+    public void setContinent(Continent continent) {
         this.continent = continent;
     }
 
